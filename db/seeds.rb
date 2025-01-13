@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'faker'
+
+Movie.destroy_all
+5.times do
+  Movie.create(
+    title: Faker::Movie.title,
+    metadata: {director: Faker::Name.name, genre: Faker::Book.genre},
+    release_date: Faker::Date.between(from: '2000-01-01', to: Date.today)
+  )
+end
